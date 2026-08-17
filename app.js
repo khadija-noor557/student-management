@@ -9,9 +9,39 @@ console.log(client);
 
 const form = document.querySelector("#studentRegistration");
 
-form.addEventListener("submit", (event)=>{
+form.addEventListener("submit", (event) => {
     event.preventDefault()
-    const formData = new FormData(form)
-    const data = Object.fromEntries(formData)
-    console.log(data)
+    try {
+        const formData = new FormData(form)
+
+        let emptyField = false;
+        const inputs = document.querySelectorAll("input")
+        inputs.forEach((input) => {
+            if (input.value === "") {
+                input.style.border = "2px solid red"
+                emptyField = true;
+            }
+        })
+
+        if (emptyField) {
+            return
+        }
+
+        const data = Object.fromEntries(formData)
+        console.log(data)
+    }
+    catch (error) {
+        console.log(error)
+    }
+})
+
+const inputs = document.querySelectorAll("input")
+inputs.forEach((input) => {
+    input.addEventListener("input", () => {
+        if (input.value !== "") {
+            input.style.border = ""
+
+        }
+    })
+
 })
