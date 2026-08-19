@@ -1,5 +1,5 @@
-const supabaseUrl = "https://xmexfecjjalkhqtrlzzj.supabase.co";
-const supabaseKey = "sb_publishable_MscDQGxX8gej_btcdCaQjA_6qODt-W8"
+const supabaseUrl = "https://usqzyvfgnwvuysjlcxdp.supabase.co";
+const supabaseKey = "sb_publishable_pDpuqIOUz6F0azIM_1qGng_1Jhcm8Hz"
 
 
 const { createClient } = supabase
