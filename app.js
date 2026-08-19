@@ -9,7 +9,7 @@ console.log(client);
 
 const form = document.querySelector("#studentRegistration");
 
-form.addEventListener("submit", (event) => {
+form.addEventListener("submit", async(event) => {
     event.preventDefault()
     try {
         const formData = new FormData(form)
@@ -28,7 +28,19 @@ form.addEventListener("submit", (event) => {
         }
 
         const data = Object.fromEntries(formData)
-        console.log(data)
+        const { email, password } = data
+
+
+        const { data:signUpData, error } = await client.auth.signUp({
+            email,
+            password,
+        })
+       if(signUpData){
+        console.log(signUpData)
+       }
+       else{
+        console.log(error.message)
+       }
     }
     catch (error) {
         console.log(error)
