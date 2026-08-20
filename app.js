@@ -1,15 +1,15 @@
-const supabaseUrl = "https://usqzyvfgnwvuysjlcxdp.supabase.co";
-const supabaseKey = "sb_publishable_pDpuqIOUz6F0azIM_1qGng_1Jhcm8Hz"
+const supabaseUrl = "https://xmexfecjjalkhqtrlzzj.supabase.co";
+const supabaseKey = "sb_publishable_MscDQGxX8gej_btcdCaQjA_6qODt-W8";
 
+const { createClient } = supabase;
 
-const { createClient } = supabase
 const client = createClient(supabaseUrl, supabaseKey)
 
 console.log(client);
 
 const form = document.querySelector("#studentRegistration");
 
-form.addEventListener("submit", async(event) => {
+form.addEventListener("submit", async (event) => {
     event.preventDefault()
     try {
         const formData = new FormData(form)
@@ -28,20 +28,24 @@ form.addEventListener("submit", async(event) => {
         }
 
         const data = Object.fromEntries(formData)
-        console.log(data)
+
         const { email, password } = data
 
-
-        const { data:signUpData, error } = await client.auth.signUp({
+        const { data: signUpData, error } = await client.auth.signUp({
             email,
             password,
         })
-       if(signUpData){
-        console.log(signUpData)
-       }
-       else{
-        console.log(error.message)
-       }
+
+        
+        const id = signUpData?.user?.id
+        console.log(id);
+
+        if (signUpData) {
+            console.log(signUpData);
+        }
+        else{
+            console.log(error.message)
+        }
     }
     catch (error) {
         console.log(error)
