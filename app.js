@@ -29,7 +29,7 @@ form.addEventListener("submit", async (event) => {
 
         const data = Object.fromEntries(formData)
 
-        const { email, password, address, city, firstname, lastname, fathername, course, dob, gender,user_id } = data
+        const { email, password, address, city, firstname, lastname, fathername, course, dob, gender, user_id } = data
         console.log(address, city, firstname, lastname, fathername, course, dob, gender)
 
         const { data: signUpData, error } = await client.auth.signUp({
@@ -44,7 +44,7 @@ form.addEventListener("submit", async (event) => {
 
         // database insertion
 
-        const { error:databaseError } = await client
+        const { error: databaseError } = await client
             .from('student_data')
             .insert({
                 firstname,
@@ -57,7 +57,7 @@ form.addEventListener("submit", async (event) => {
                 course,
                 user_id, id
             })
-console.log(databaseError)
+        console.log(databaseError)
 
         if (signUpData) {
             console.log(signUpData);
@@ -65,6 +65,8 @@ console.log(databaseError)
         else {
             console.log(error.message)
         }
+        window.location.href = "login.html";
+
     }
     catch (error) {
         console.log(error)
