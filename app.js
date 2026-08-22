@@ -65,7 +65,7 @@ form.addEventListener("submit", async (event) => {
         else {
             console.log(error.message)
         }
-        window.location.href = "login.html";
+        window.location.href = "./pages/login.html";
 
     }
     catch (error) {

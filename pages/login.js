@@ -7,9 +7,9 @@ const client = createClient(supabaseUrl, supabaseKey)
 
 console.log(client);
 
-const form = document.querySelector("#loginform");
+const loginForm = document.querySelector("#loginform");
 
-loginForm.addEventListener("submit", (event) => {
+loginForm.addEventListener("submit", async (event) => {
     event.preventDefault()
     try {
         const formData = new FormData(loginForm)
@@ -40,12 +40,12 @@ loginForm.addEventListener("submit", (event) => {
         }
         else {
             console.log(error.message)
-
         }
 
         console.log("Login successful:", signInData);
+            window.location.href = "../index.html";
 
-        window.location.href = "index.html";
+
 
     }
     catch (error) {
