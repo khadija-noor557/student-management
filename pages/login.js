@@ -7,12 +7,16 @@ const client = createClient(supabaseUrl, supabaseKey)
 
 console.log(client);
 
-const loginForm = document.querySelector("#loginform");
+const loginBtn = document.querySelector("#loginBtn");
+console.log(loginBtn)
 
-loginForm.addEventListener("submit", async (event) => {
-    event.preventDefault()
+loginBtn.addEventListener("submit", async (event) => {
+    console.log("okkk")
+    event.preventDefault();
+    console.log("okkkk")
     try {
-        const formData = new FormData(loginForm)
+        const formData = new FormData(loginBtn)
+        console.log(formData);
 
         let emptyField = false;
         const inputs = document.querySelectorAll("input")
@@ -43,10 +47,7 @@ loginForm.addEventListener("submit", async (event) => {
         }
 
         console.log("Login successful:", signInData);
-            window.location.href = "../index.html";
-
-
-
+            window.location.href = "/home.html";
     }
     catch (error) {
         console.log(error)

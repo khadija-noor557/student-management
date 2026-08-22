@@ -6,3 +6,22 @@ const { createClient } = supabase;
 const client = createClient(supabaseUrl, supabaseKey)
 
 console.log(client);
+
+const homeForm = document.querySelector("#homeForm");
+
+
+async function getUserData() {
+
+    const { data: { user }, error } = await client.auth.getUser();
+
+    if (error) {
+        console.log(error.message);
+        return;
+    }
+
+    if (user) {
+        document.querySelector("#userEmail").textContent = user.email;
+    }
+}
+
+getUserData();
